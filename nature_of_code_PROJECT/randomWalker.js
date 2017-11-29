@@ -1,3 +1,4 @@
+//actualizar en git
 let walk;
 
 function setup(){
