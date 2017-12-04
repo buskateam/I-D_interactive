@@ -20,8 +20,8 @@ class Walker {
   constructor(){
     this.x =width/2;
     this.y =height/2;
-    this.stepy = 0.5;
-    this.stepX =1;
+    this.stepy;
+    this.stepX;
 
   }//end construcotor
 
@@ -30,14 +30,18 @@ class Walker {
      var stepsize = random(0,10);
      var probability = this.stepsize;
      var stepD = random(0,10);
-    
+
+     this.stepX = pow(random(-stepsize,stepsize));
+     this.stepY = pow(random(-stepsize,stepsize));
 
      if(stepD < probability){
-        this.x++;
+
+       this.x += this.stepX;
+       this.y += this.stepX;
 
      }else{
-       this.x += stepsize;
-       this.y += -stepsize;
+       this.x += random (-1,1);
+       this.y += random (-1,1);
      }
 
   }
