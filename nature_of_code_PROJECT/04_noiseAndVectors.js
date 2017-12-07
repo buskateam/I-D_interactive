@@ -1,4 +1,4 @@
-
+//What is Perlin Noise?
 var inc  = 0.1;
 var nq = 2;
 var scl = 20;
@@ -13,7 +13,10 @@ createCanvas(500,500);
 cols = floor(width/scl);
 rows = floor(height/scl);
 fr = createP('');
-particle[0] = new Particle();
+
+for(var i =0; i<100; i++){
+  particle[i] = new Particle();
+}
 
  }
 
@@ -30,7 +33,7 @@ background(255);
       var angle = noise(xoff,yoff,zoff)*TWO_PI;
       var v = p5.Vector.fromAngle(angle);
       xoff +=inc;
-      stroke(0);
+      stroke(0,50);
       push();
       translate(x*scl,y*scl);
       rotate(v.heading());
@@ -40,8 +43,11 @@ background(255);
       yoff += inc;
       zoff += 0.0004;
     }
+    for(var i = 0 ; i<particle.length; i++){
+      particle[i].update();
+      particle[i].show();
+      particle[i].edges();
+    }
 
-    particle[0].update();
-    particle[0].show();
     fr.html(floor(frameRate()));
   }
