@@ -4,12 +4,16 @@ var nq = 2;
 var scl = 20;
 var cols, rows;
 var fr;
+var zoff = 0;
+var particle = [];
+
 
 function setup(){
-createCanvas(300,300);
+createCanvas(500,500);
 cols = floor(width/scl);
 rows = floor(height/scl);
 fr = createP('');
+particle[0] = new Particle();
 
  }
 
@@ -19,12 +23,12 @@ background(255);
   var yoff = 0;
 
 
-  for(var y = 0; y <height; y++){
+  for(var y = 0; y <rows; y++){
     var xoff = 0;
-    for(var x = 0; x < width; x++){
+    for(var x = 0; x < cols; x++){
       var index = (x+y*width)*4;
-      var r = noise(xoff,yoff)*255;
-      var v = p5.Vector.fromAngle(random(TWO_PI));
+      var angle = noise(xoff,yoff,zoff)*TWO_PI;
+      var v = p5.Vector.fromAngle(angle);
       xoff +=inc;
       stroke(0);
       push();
@@ -34,7 +38,10 @@ background(255);
       pop();
     }
       yoff += inc;
-
+      zoff += 0.0004;
     }
+
+    particle[0].update();
+    particle[0].show();
     fr.html(floor(frameRate()));
   }
