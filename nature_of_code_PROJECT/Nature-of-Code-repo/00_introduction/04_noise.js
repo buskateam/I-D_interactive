@@ -86,4 +86,3 @@ constructor(x,y){
     ellipse(this.x, this.y, this.x/10,this.x/10);
   }
 }
->>>>>>> 70e6dd07b0bf524152c0c63e9aad13890a166748
