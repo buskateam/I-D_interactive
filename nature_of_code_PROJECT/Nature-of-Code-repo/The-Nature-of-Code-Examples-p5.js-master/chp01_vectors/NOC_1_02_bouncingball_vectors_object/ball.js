@@ -11,6 +11,7 @@ function Ball() {
   this.update = function() {
     // Add the current speed to the position.
     this.position.add(this.velocity);
+      
     if ((this.position.x > width) || (this.position.x < 0)) {
       this.velocity.x = this.velocity.x * -1;
     }
